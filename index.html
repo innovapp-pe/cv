@@ -798,21 +798,21 @@
                             <form id="contactForm" class="single-form quate-form wow fadeInUp" data-toggle="validator">
                                 <div id="msgSubmit" class="h3 text-center hidden"></div>
                                 <div class="row">
-                                    <div class="col-md-6 col-sm-12">
+                                    <!-- <div class="col-md-6 col-sm-12">
                                         <input name="name" class="contact-name form-control" id="name" type="text" placeholder="Nombre o Razón Social" required>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12">
+                                    </div> -->
+                                    <div class="col-sm-12">
                                         <input name="subject" class="contact-email form-control" id="subject" type="text" placeholder="Asunto" required>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <!-- <div class="col-sm-12">
                                         <input name="email" class="contact-subject form-control" id="email" type="email" placeholder="Correo" required>
-                                    </div>
+                                    </div> -->
                                     <div class="col-sm-12">
-                                        <textarea class="contact-message" id="message" rows="6" placeholder="Mensaje" required></textarea>
+                                        <textarea class="contact-message" id="message" name="text" rows="6" placeholder="Mensaje" required></textarea>
                                     </div>
                                     <!-- Subject Button -->
                                     <div class="btn-form col-sm-12">
-                                        <button type="submit" class="btn btn-fill btn-block" id="form-submit">Enviar</button>
+                                        <button type="submit" name="send" class="btn btn-fill btn-block" id="form-submit">Enviar</button>
                                     </div>
                                 </div>
                             </form>

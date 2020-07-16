@@ -66,9 +66,56 @@
              $(this).find(".owl-item.active .slide-img").addClass("fadeInRight animated").css("opacity","1");
          });
 
+         //To get actual year, instead of static one
          var actual_year = new Date().getFullYear();
          $("#actual-year").text(actual_year); 
-     });
+
+         //To send email
+          //update this with your $form selector
+          var form_id = "contactForm";
+
+          var data = {
+              "access_token": "c2s16nwiq6uwwzz9vc8c4gdk"
+          };
+
+          function onSuccess() {
+              // remove this to avoid redirect
+              //window.location = window.location.pathname + "?message=Email+Successfully+Sent%21&isError=0";
+              $("#form-submit").text("Mensaje enviado");
+              $("#form-submit").prop("disabled",false);
+          }
+
+          function onError(error) {
+              // remove this to avoid redirect
+              //window.location = window.location.pathname + "?message=Email+could+not+be+sent.&isError=1";
+          }
+
+          var sendButton = $("#" + form_id + " [name='send']");
+
+          function send() {
+              sendButton.val('Sending…');
+              sendButton.prop('disabled',true);
+
+              var subject = $("#" + form_id + " [name='subject']").val();
+              var message = $("#" + form_id + " [name='text']").val();
+              data['subject'] = subject;
+              data['text'] = message;
+
+              $.post('https://postmail.invotes.com/send',
+                  data,
+                  onSuccess
+              ).fail(onError);
+
+              return false;
+          }
+
+          sendButton.on('click', send);
+
+          var $form = $("#" + form_id);
+          $form.submit(function( event ) {
+              event.preventDefault();
+          });
+           });
    
     /*
     |====================
